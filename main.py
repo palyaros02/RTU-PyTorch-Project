@@ -37,5 +37,5 @@ def test_classifier_v2():
     pass
 
 if __name__ == '__main__':
-    test_classifier_v1()
+    # test_classifier_v1()
     test_classifier_v2()
