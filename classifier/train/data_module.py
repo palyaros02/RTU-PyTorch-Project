@@ -10,7 +10,7 @@ class CIFAR10DataModule(pl.LightningDataModule):
     def __init__(self, batch_size=4):
         super().__init__()
         self.batch_size = batch_size
-        self.data_dir = os.path.dirname(os.path.abspath(__file__))[:-2] + '/download'
+        self.data_dir = os.path.dirname(os.path.abspath(__file__))[:-5] + '/download'
         self.classes = ('plane', 'car', 'bird', 'cat', 'deer',
                         'dog', 'frog', 'horse', 'ship', 'truck')
         self.transform = transforms.Compose(
