@@ -1,9 +1,7 @@
-if __name__ == '__main__': 
+if __name__ == '__main__':
     from torch.optim import SGD
     from torch.nn import CrossEntropyLoss
     import torch
-    import torchvision
-    import torchvision.transforms as transforms
 
     import matplotlib.pyplot as plt
     import numpy as np
@@ -27,9 +25,8 @@ if __name__ == '__main__':
 
     net.load_state_dict(
         train(
-            criterion, optimizer, net, trainloader, 
-            epochs=2, retrain=False, verbose=5,
-            save_path='/classifier/data/model.pth'
+            criterion, optimizer, net, trainloader,
+            epochs=2, retrain=False, verbose=5
             ))
 
     def imshow(img):
@@ -37,11 +34,11 @@ if __name__ == '__main__':
         npimg = img.numpy()
         plt.imshow(np.transpose(npimg, (1, 2, 0)))
         plt.show()
-        
-        
+
+
     dataiter = iter(testloader)
-    images, labels = dataiter.next()
-    imshow(torchvision.utils.make_grid(images))
+    images, labels = next(dataiter)
+    # imshow(torchvision.utils.make_grid(images))
     print("GroundTruth: ", " ".join("%5s" % classes[labels[j]] for j in range(4)))
     _, predicted = torch.max(net(images.to(device)), 1)
     print("Predicted: ", " ".join("%5s" % classes[predicted[j]]
@@ -69,7 +66,7 @@ if __name__ == '__main__':
     # again no gradients needed
     with torch.no_grad():
         for data in testloader:
-            images, labels = data
+            images, labels = data[0].to(device), data[1].to(device)
             outputs = net(images)
             _, predictions = torch.max(outputs, 1)
             # collect the correct predictions for each class
