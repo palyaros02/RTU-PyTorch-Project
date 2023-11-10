@@ -1,8 +1,12 @@
+"""Classifier net"""
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
 class Net(nn.Module):
+    """A simple Convolutional Neural Network."""
+
     def __init__(self):
         super().__init__()
         self.conv1 = nn.Conv2d(3, 6, 5)
@@ -13,6 +17,20 @@ class Net(nn.Module):
         self.fc3 = nn.Linear(84, 10)
 
     def forward(self, x):
+        """
+        Defines the computation performed at every call.
+
+        Parameters
+        ----------
+            x : torch.Tensor
+                input tensor
+
+        Returns
+        -------
+        torch.Tensor
+            output tensor
+        """
+
         x = self.pool(F.relu(self.conv1(x)))
         x = self.pool(F.relu(self.conv2(x)))
         x = torch.flatten(x, 1) # flatten all dimensions except batch

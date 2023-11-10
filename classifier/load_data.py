@@ -1,10 +1,17 @@
+"""
+This module provides a class for loading CIFAR10 dataset using PyTorch.
+"""
+
 import os
 
 import torch
 import torchvision
 import torchvision.transforms as transforms
 
+
 class CIFAR10_loader:
+    """A class used to load the CIFAR10 dataset."""
+
     def __init__(self, batch_size=4):
         self.batch_size = batch_size
         self.classes = ('plane', 'car', 'bird', 'cat', 'deer',
@@ -12,6 +19,13 @@ class CIFAR10_loader:
         self.PATH = os.path.dirname(os.path.abspath(__file__)) + '/data/download'
 
     def load(self):
+        """
+        Returns
+        -------
+        tuple
+            a tuple containing the trainloader, testloader and classes
+        """
+
         transform = transforms.Compose(
             [transforms.ToTensor(),
             transforms.Normalize((0.5, 0.5, 0.5),
