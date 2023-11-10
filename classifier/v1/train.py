@@ -1,11 +1,12 @@
 import os
-from typing import Dict, Any
+from typing import Any, Dict
 
 import torch
 import torch.nn as nn
 import torch.optim as optim
 
 from . import device
+
 
 def train(
     criterion,
@@ -14,7 +15,7 @@ def train(
     trainloader: torch.utils.data.DataLoader,
     epochs=2,
     retrain=False,
-    save_path='./classifier/data/model.pth',
+    save_path='./classifier/v1/data/model.pth',
     verbose=None,
     ) -> Dict[str, Any]:
 

@@ -16,7 +16,7 @@ class CIFAR10_loader:
         self.batch_size = batch_size
         self.classes = ('plane', 'car', 'bird', 'cat', 'deer',
                         'dog', 'frog', 'horse', 'ship', 'truck')
-        self.PATH = os.path.dirname(os.path.abspath(__file__)) + '/data/download'
+        self.PATH = os.path.dirname(os.path.abspath(__file__))[:-2] + '/download'
 
     def load(self):
         """
