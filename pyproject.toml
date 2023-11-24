@@ -14,6 +14,8 @@ wandb = "^0.16.0"
 scipy = {version = "^1.11.3", python = ">=3.11,<3.13"}
 matplotlib = "^3.8.1"
 lightning = "^2.1.1"
+opencv-python = "^4.8.1.78"
+imutils = "^0.5.4"
 
 
 [tool.poetry.group.dev.dependencies]
